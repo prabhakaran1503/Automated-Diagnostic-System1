@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-4 text-primary">🩺 Diagnostic Results</h1>
+        </header>
+
+        <main>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow mb-4">
+                        <div class="card-body p-4">
+                            <h2 class="card-title mb-4">Patient Information</h2>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <p><strong>Name:</strong> {{ patient_data.name }}</p>
+                                    <p><strong>Age:</strong> {{ patient_data.age }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Gender:</strong> {{ patient_data.gender }}</p>
+                                    <!-- This uses the 'current_date' variable passed from Flask -->
+                                    <p><strong>Date:</strong> {{ current_date }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-body p-4">
+                            <h2 class="card-title mb-4">Analysis Results</h2>
+                            
+                            <div class="alert alert-{{ 'danger' if analysis.overall_status == 'risk' else 'success' }} mb-4" role="alert">
+                                <h4 class="alert-heading">{{ analysis.overall_message }}</h4>
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter</th>
+                                            <th>Value</th>
+                                            <th>Status</th>
+                                            <th>Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for result in analysis.results %}
+                                        <tr>
+                                            <td>{{ result.parameter }}</td>
+                                            <td>{{ result.value }}</td>
+                                            <td>
+                                                <span class="badge bg-{{ 'danger' if result.status == 'risk' else 'success' if result.status == 'normal' else 'secondary' }}">
+                                                    {{ result.status|title }}
+                                                </span>
+                                            </td>
+                                            <td>{{ result.message }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5>Recommendations:</h5>
+                                <ul>
+                                    {% if analysis.overall_status == 'risk' %}
+                                        <li>Consult with a healthcare professional for further evaluation</li>
+                                        <li>Follow up with additional diagnostic tests if recommended by your doctor</li>
+                                        <li>Consider lifestyle modifications based on the risk factors identified</li>
+                                    {% else %}
+                                        <li>Continue maintaining a healthy lifestyle</li>
+                                        <li>Schedule regular check-ups as recommended by your healthcare provider</li>
+                                        <li>Keep monitoring these parameters periodically</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                <button type="button" class="btn btn-outline-secondary me-md-2" onclick="window.print()">
+                                    <i class="bi bi-printer"></i> Print Report
+                                </button>
+                                <a href="{{ url_for('index') }}" class="btn btn-primary">New Analysis</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="text-center mt-5 text-muted">
+            <p>&copy; 2023 Automated Diagnostic System. This is for demonstration purposes only and not a substitute for professional medical advice.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

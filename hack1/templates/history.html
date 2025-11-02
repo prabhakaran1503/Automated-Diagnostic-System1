@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient History</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-4 text-primary">🩺 Patient History</h1>
+        </header>
+
+        <main>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h2 class="card-title mb-0">Recent Patient Records</h2>
+                                <a href="{{ url_for('index') }}" class="btn btn-primary">New Analysis</a>
+                            </div>
+                            
+                            {% if patients %}
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Gender</th>
+                                            <th>Glucose</th>
+                                            <th>BP</th>
+                                            <th>Cholesterol</th>
+                                            <th>Diagnosis</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for patient in patients %}
+                                        <tr>
+                                            <td>{{ patient.id }}</td>
+                                            <td>{{ patient.name }}</td>
+                                            <td>{{ patient.age }}</td>
+                                            <td>{{ patient.gender }}</td>
+                                            <td>{{ patient.glucose }}</td>
+                                            <td>{{ patient.systolic_bp }}/{{ patient.diastolic_bp }}</td>
+                                            <td>{{ patient.cholesterol }}</td>
+                                            <td>{{ patient.diagnosis }}</td>
+                                            <td>{{ patient.created_at }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% else %}
+                            <div class="alert alert-info" role="alert">
+                                No patient records found. Start by <a href="{{ url_for('index') }}" class="alert-link">analyzing a new patient</a>.
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="text-center mt-5 text-muted">
+            <p>&copy; 2023 Automated Diagnostic System. This is for demonstration purposes only and not a substitute for professional medical advice.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

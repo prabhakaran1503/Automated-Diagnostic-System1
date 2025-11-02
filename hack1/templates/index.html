@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Diagnostic System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-4 text-primary">🩺 Automated Diagnostic System</h1>
+            <p class="lead">Enter patient details and lab values to get instant health insights</p>
+        </header>
+
+        <main>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <form action="{{ url_for('analyze') }}" method="post" id="diagnosticForm">
+                                <h2 class="card-title mb-4">Patient Information</h2>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="age" class="form-label">Age</label>
+                                        <input type="number" class="form-control" id="age" name="age" min="1" max="120" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-select" id="gender" name="gender" required>
+                                            <option value="" selected disabled>Select</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="mt-4 mb-3">Lab Results</h3>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="glucose" class="form-label">Glucose Level (mg/dL)</label>
+                                        <input type="number" class="form-control" id="glucose" name="glucose" step="0.1" required>
+                                        <div class="form-text">Normal: 70-140 mg/dL</div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="systolic_bp" class="form-label">Systolic BP (mmHg)</label>
+                                        <input type="number" class="form-control" id="systolic_bp" name="systolic_bp" required>
+                                        <div class="form-text">Normal: < 140 mmHg</div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="diastolic_bp" class="form-label">Diastolic BP (mmHg)</label>
+                                        <input type="number" class="form-control" id="diastolic_bp" name="diastolic_bp" required>
+                                        <div class="form-text">Normal: < 90 mmHg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cholesterol" class="form-label">Cholesterol Level (mg/dL)</label>
+                                        <input type="number" class="form-control" id="cholesterol" name="cholesterol" step="0.1" required>
+                                        <div class="form-text">Normal: < 200 mg/dL</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="{{ url_for('history') }}" class="btn btn-outline-secondary me-md-2">View History</a>
+                                    <button type="submit" class="btn btn-primary">Analyze Results</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="text-center mt-5 text-muted">
+            <p>&copy; 2023 Automated Diagnostic System. This is for demonstration purposes only and not a substitute for professional medical advice.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
