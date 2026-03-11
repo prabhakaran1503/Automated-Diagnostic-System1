@@ -1,117 +1,101 @@
-AI-Based Automated Diagnostic System
-📋 Project Overview
+# AI-Based Automated Diagnostic System
 
-The AI-Based Automated Diagnostic System is a Python-powered healthcare application that analyzes patient lab reports automatically.
-It aims to reduce manual diagnostic effort, minimize human errors, and assist medical professionals in making accurate, data-driven decisions faster.
+An AI-powered healthcare application that analyzes patient lab reports automatically and predicts possible health risks.
 
-This project uses AI/ML models (Decision Tree / Logistic Regression) to process health parameters like Glucose Level, Blood Pressure, Cholesterol, and BMI, and provides diagnostic insights with risk levels and recommendations.
+This project was developed during a **hackathon event** to demonstrate how Artificial Intelligence can assist doctors in faster and more accurate diagnosis.
 
-🚀 Features
+---
 
-✅ Automatically analyzes patient data and lab reports
-✅ Detects possible health risks (e.g., Diabetes, High BP, Cholesterol, Obesity)
-✅ Provides real-time results with health suggestions
-✅ Achieves over 90% accuracy with trained data
-✅ Visualizes patient data using simple graphs
-✅ Lightweight — runs without a database
+## 🚀 Features
 
-⚙️ Tech Stack
-Component	Technology Used
-Language	Python
-Libraries	pandas, numpy, scikit-learn, matplotlib
-Interface	Command Line / Tkinter GUI (optional)
-Dataset	automated_diagnostic_dataset_1000.csv (Custom)
-Storage	Local CSV (No database required)
-🧩 Dataset Details
+* Automatic analysis of patient lab reports
+* Detects health risks such as:
 
-Dataset Name: automated_diagnostic_dataset_1000.csv
-Records: 1000+ patient entries
+  * Diabetes
+  * High Blood Pressure
+  * High Cholesterol
+  * Obesity
+* Provides health risk levels:
 
-Columns:
+  * 🟢 Normal
+  * 🟡 Moderate
+  * 🔴 High
+* Generates simple health recommendations
+* Visualizes patient data using graphs
+* Lightweight system using CSV dataset (no database)
 
-Patient_ID
+---
 
-Age
+## 🛠️ Tech Stack
 
-Gender
+**Programming Language**
 
-Glucose_Level (mg/dL)
+* Python
 
-Systolic_BP (mmHg)
+**Libraries**
 
-Diastolic_BP (mmHg)
+* pandas
+* numpy
+* scikit-learn
+* matplotlib
 
-Cholesterol_Level (mg/dL)
+**Frontend**
 
-BMI
+* HTML
+* CSS
+* JavaScript
 
-Diagnosis
+**Backend**
 
-Example Entry:
+* Python (Flask)
 
-Patient_ID	Glucose_Level	Systolic_BP	Diastolic_BP	Cholesterol_Level	BMI	Diagnosis
-101	180	130	85	210	28.4	Diabetes Risk
-🧠 How It Works
+**Storage**
 
-Input:
-User enters patient lab values manually or uploads a .csv file.
+* CSV Dataset
 
-Processing:
-The system analyzes data using AI models or rule-based logic to predict possible health conditions.
+---
 
-Output:
-Displays health insights such as:
+## 📂 Project Structure
 
-Detected risks (e.g., Diabetes, High BP)
+```
+Automated-Diagnostic-System1/
+│
+├── app.py
+├── script.js
+├── style.css
+├── uploads.csv
+├── requirements.txt
+└── README.md
+```
 
-Risk level: 🟢 Normal | 🟡 Moderate | 🔴 High
+---
 
-AI-generated recommendations
+## 🧠 How the System Works
 
-⚖️ Comparison: Existing vs Proposed
-Feature	Existing System	Proposed System
-Diagnosis Method	Manual	AI-Powered Automation
-Time Required	High	Very Low
-Error Probability	High	Minimal
-Data Handling	Paper / Manual Entry	Digital (CSV)
-Insights	Basic	Predictive and Prescriptive
-🌟 Advantages
+1. User enters patient lab values or uploads a CSV file.
+2. The system processes the data using machine learning models.
+3. The AI predicts possible health risks.
+4. The results are displayed with risk levels and recommendations.
 
-Reduces diagnostic errors
+---
 
-Speeds up medical decision-making
+## 📈 Future Improvements
 
-Provides consistent and accurate results
+* Integration with IoT health monitoring devices
+* Cloud-based patient record storage
+* Mobile application support
+* Advanced deep learning models for multi-disease prediction
 
-Scalable and easy to deploy
+---
 
-Useful for clinics, hospitals, and diagnostic centers
+## 👨‍💻 Team
 
-📈 Future Enhancements
+Developed for a **Hackathon Project**
 
-Integration with IoT-enabled health monitoring devices
+* Prabhakaran 
 
-Real-time cloud-based report storage
+---
 
-Mobile app for patient self-check analysis
+## 📌 Purpose
 
-Multi-disease detection using deep learning models
-
-Voice-based diagnosis for accessibility
-
-📚 References
-
-IEEE Paper: AI in Healthcare Diagnosis (2023)
-
-Kaggle Dataset: Patient Health Data for AI Models
-
-Python Libraries: pandas, scikit-learn, matplotlib
-
-Related Project: Smart Health Prediction System (2022)
-
-👨‍💻 Author
-
-Project Developed By:
-Prabha Karan
-Department of Computer Science and Engineering (IoT)
-For Hackathon / Research / Academic Submission
+This project demonstrates how **Artificial Intelligence can assist healthcare professionals in faster and data-driven diagnosis**.
